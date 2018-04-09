@@ -7,8 +7,15 @@ import Picker from './Picker';
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      file: null,
+    };
+  }
+
   getFileInput = (fileFromUploader) => {
-    this.fileData = fileFromUploader;
+    this.setState({ file: fileFromUploader });
   }
 
   render() {
@@ -20,7 +27,7 @@ class App extends Component {
           <Picker />
         </div>
         <div>
-          <BarChart data={this.fileData} size={[500,500]} />
+          <BarChart data={this.state.file} size={[500,500]} />
         </div>
         <div className="App-footer">
           <Uploader fileCallback={this.getFileInput}/>

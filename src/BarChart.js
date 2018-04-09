@@ -20,6 +20,9 @@ class BarChart extends Component {
 
     createBarChart(){
         console.log("In BarChart update", this.props.data);
+
+        // FILE IS COMING THORUGH!!!! NOW HOW DO WE PROCESS IT???
+
         // const node = this.node;
         // const dataMax = max(this.props.data);
         // const yScale = scaleLinear()
