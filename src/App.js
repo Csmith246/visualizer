@@ -4,6 +4,7 @@ import './App.css';
 import BarChart from './BarChart';
 import Uploader from './Uploader';
 import Picker from './Picker';
+import LineChart from './LineChart';
 
 
 class App extends Component {
@@ -27,7 +28,12 @@ class App extends Component {
           <Picker />
         </div>
         <div>
-          <BarChart data={this.state.file} size={[500,500]} />
+          {/* <BarChart data={this.state.file} size={[500,500]} /> */}
+          {
+            (this.state.file)
+              ? (<LineChart data={this.state.file} size={[500,500]} />)
+              :  <div>Importo some data yo</div>
+          }
         </div>
         <div className="App-footer">
           <Uploader fileCallback={this.getFileInput}/>
