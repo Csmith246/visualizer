@@ -56,8 +56,17 @@ class BarChart extends Component {
 
     }
 
+<<<<<<< HEAD
     render() {
         return <svg ref={node => this.node = node} width={500} height={500}></svg>
+=======
+    render(){
+        return (
+            <svg ref={node => this.node=node}
+            width={500} height={500}>
+            </svg>
+        )
+>>>>>>> 291b3d7c57191ce900c7652927fc7be17e5b87b6
     }
 }
 export default BarChart
