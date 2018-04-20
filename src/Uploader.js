@@ -15,9 +15,10 @@ class Uploader extends Component {
     }
 
     render(){
+        // can use onchange event method in file input tag, if necessary
         return(
             <form onSubmit={this.handleUpload}>
-                <input type="file" ref = {input => {this.fileInput = input}}/>
+                <input type="file" ref = {input => {this.fileInput = input}}/> 
                 <input type="submit" value="Upload"/>
             </form>
         )

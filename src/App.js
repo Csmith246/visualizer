@@ -27,7 +27,7 @@ class App extends Component {
           <Picker />
         </div>
         <div>
-          <BarChart data={this.state.file} size={[500,500]} />
+          {(this.state.file) ? <BarChart data={this.state.file} size={[500,500]} /> : <div>Upload a File</div>}
         </div>
         <div className="App-footer">
           <Uploader fileCallback={this.getFileInput}/>
