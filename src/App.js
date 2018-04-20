@@ -11,36 +11,45 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      file: null,
+      jsonData: null,
+      canvasSize: [800, 500],
+      visualization: "Line"
     };
   }
 
-  getFileInput = (fileFromUploader) => {
-    this.setState({ file: fileFromUploader });
+  getFileInput = (dataFromUploader) => {
+    this.setState({ jsonData: dataFromUploader });
+  }
+
+  getVisualization = (vis) => {
+    console.log(vis);
+    this.setState({ visualization: vis });
   }
 
   render() {
+    var pics = {
+      'line': './images/lineChart.png',
+      'bar': './images/barChart.png',
+      'pie': './images/pieChart.png'
+    };
+
     return (
       <div className='App'>
         <div className='App-header'>
           <h2>Data Viewer</h2>
           <h4>Visualize your data in the browser!</h4>
-          <Picker />
+          <Picker visCallback={this.getVisualization} pics={pics}/>
         </div>
         <div>
-<<<<<<< HEAD
-          {(this.state.file) ? <BarChart data={this.state.file} size={[500,500]} /> : <div>Upload a File</div>}
-=======
-          {/* <BarChart data={this.state.file} size={[500,500]} /> */}
+          {/* {
+            (this.state.jsonData) ? <BarChart data={this.state.jsonData} size={this.state.canvasSize} /> : <div>Upload a File</div>
+          } */}
           {
-            (this.state.file)
-              ? (<LineChart data={this.state.file} size={[500,500]} />)
-              :  <div>Importo some data yo</div>
+            (this.state.jsonData) ? (<LineChart data={this.state.jsonData} size={this.state.canvasSize} />) :  <div>Importo some data yo</div>
           }
->>>>>>> 291b3d7c57191ce900c7652927fc7be17e5b87b6
         </div>
         <div className="App-footer">
-          <Uploader fileCallback={this.getFileInput}/>
+          <Uploader dataCallback={this.getFileInput}/>
         </div>
       </div>
     );

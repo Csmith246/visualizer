@@ -4,7 +4,7 @@ import * as d3Arr from 'd3-array';
 import * as d3Axis from 'd3-axis';
 import * as d3Shape from 'd3-shape';
 import * as d3Select from 'd3-selection';
-import * as d3Dsv from 'd3-dsv';
+
 
 class LineChart extends Component{
     constructor(props){
@@ -13,26 +13,11 @@ class LineChart extends Component{
     }
 
     componentDidMount(){
-        var temp = this.props.data.files[0];
-        console.log("TEMP", temp);
-        var reader = new FileReader();
-        reader.onload = function(e){
-            console.log("EEEE", e);
-            let dataStr = e.target.result;
-            //console.log(dataStr);
-            let jsonData = d3Dsv.csvParse(dataStr);
-            console.log(jsonData);
-            this.createLineChart(jsonData);
-
-        }.bind(this);
-        reader.readAsText(temp);
-
-
-        //this.createLineChart();
+        this.createLineChart(this.props.data);
     }
 
     componentDidUpdate(){
-        this.createLineChart();
+        this.createLineChart(this.props.data);
     }
 
 

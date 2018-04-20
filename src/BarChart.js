@@ -3,14 +3,11 @@ import './App.css';
 import {scaleLinear} from 'd3-scale';
 import {max} from 'd3-array';
 import {select} from 'd3-selection';
-import {csvParse} from 'd3-dsv';
 
 class BarChart extends Component {
     constructor(props) {
         super(props);
         this.createBarChart = this.createBarChart.bind(this);
-        this.formatData = this.formatData.bind(this);
-        this.state = {csvData:null}
     }
 
     componentDidMount() {
@@ -19,22 +16,6 @@ class BarChart extends Component {
 
     componentDidUpdate() {
         this.createBarChart();
-    }
-
-    formatData(){
-        var file = this.props.data.files[0];
-        var reader = new FileReader();
-        reader.onload = function (event) {
-            let data = event.target.result;
-            // The file's text will be printed here
-            console.log(event.target.result);
-            let resJson = csvParse(data);
-            console.log(resJson);
-            this.setState({ csvData: resJson });
-            this.createBarChart();
-        };
-
-        reader.readAsText(file);
     }
 
     createBarChart() {
@@ -56,17 +37,12 @@ class BarChart extends Component {
 
     }
 
-<<<<<<< HEAD
-    render() {
-        return <svg ref={node => this.node = node} width={500} height={500}></svg>
-=======
     render(){
         return (
             <svg ref={node => this.node=node}
             width={500} height={500}>
             </svg>
         )
->>>>>>> 291b3d7c57191ce900c7652927fc7be17e5b87b6
     }
 }
 export default BarChart
