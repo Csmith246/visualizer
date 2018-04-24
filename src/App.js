@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import BarChart from './BarChart';
 import Uploader from './Uploader';
-import Picker from './Picker';
+import Picker from './Picker/Picker.js';
 import LineChart from './LineChart';
 
 
@@ -28,9 +28,9 @@ class App extends Component {
 
   render() {
     var pics = {
-      'line': './images/lineChart.png',
-      'bar': './images/barChart.png',
-      'pie': './images/pieChart.png'
+      'line': 'lineChart',
+      'bar': 'barChart',
+      'pie': 'pieChart'
     };
 
     return (

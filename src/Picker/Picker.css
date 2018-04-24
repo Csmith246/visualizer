@@ -1,0 +1,15 @@
+.graphPicker{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.pic{
+    padding: 3px;
+    cursor: pointer;
+}
+
+.pic:active{
+    /* MAKE ANIMATION for selecting an image here. */
+}
