@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       jsonData: null,
       canvasSize: [800, 500],
-      visualization: "Line"
+      chartType: "Line"
     };
   }
 
@@ -21,9 +21,9 @@ class App extends Component {
     this.setState({ jsonData: dataFromUploader });
   }
 
-  getVisualization = (vis) => {
-    console.log(vis);
-    this.setState({ visualization: vis });
+  getChartType = (type) => {
+    console.log(type);
+    this.setState({ chartType: type });
   }
 
   render() {
@@ -38,7 +38,7 @@ class App extends Component {
         <div className='App-header'>
           <h2>Data Viewer</h2>
           <h4>Visualize your data in the browser!</h4>
-          <Picker visCallback={this.getVisualization} pics={pics}/>
+          <Picker chartTypeCallback={this.getChartType} pics={pics}/>
         </div>
         <div>
           {/* {
