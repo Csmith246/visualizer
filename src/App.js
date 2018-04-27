@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       jsonData: null,
       canvasSize: [800, 500],
-      chartType: "Line"
+      chartType: null
     };
   }
 
@@ -40,13 +40,22 @@ class App extends Component {
           <h4>Visualize your data in the browser!</h4>
           <Picker chartTypeCallback={this.getChartType} pics={pics}/>
         </div>
-        <div>
-          {/* {
-            (this.state.jsonData) ? <BarChart data={this.state.jsonData} size={this.state.canvasSize} /> : <div>Upload a File</div>
-          } */}
-          {
-            (this.state.jsonData) ? (<LineChart data={this.state.jsonData} size={this.state.canvasSize} />) :  <div>Importo some data yo</div>
-          }
+        <div className="App-body">
+          {( ()=>{ // Immediately invoked function expression - do this to write sophisticated if-else logic in JSX
+            if(!this.state.chartType){
+              return <div className="alertMsg">Choose a Chart Type</div>;
+            }else if(!this.state.jsonData){
+              return <div className="alertMsg">Upload a File</div>
+            }else{
+              console.log("IN THE SWITCH");
+              switch (this.state.chartType){
+                case "barChart":  return <BarChart data={this.state.jsonData} size={this.state.canvasSize} />;
+                case "lineChart": return <LineChart data={this.state.jsonData} size={this.state.canvasSize} />;
+                case "pieChart":  return <LineChart data={this.state.jsonData} size={this.state.canvasSize} />;
+                default:          return <div>Error... yo</div>;
+              }
+            }
+          }) ()}
         </div>
         <div className="App-footer">
           <Uploader dataCallback={this.getFileInput}/>
